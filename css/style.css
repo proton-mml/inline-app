@@ -1,0 +1,17 @@
+.round {
+    border: 4px solid #009688;
+    border-radius: 50%;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    line-height: 200px;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}

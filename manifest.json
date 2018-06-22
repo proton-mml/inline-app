@@ -1,5 +1,7 @@
 {
   "name": "Inline",
+  "short_name": "Inline",
+  "description": "Seu app de filas!",
   "theme_color": "#009688",
   "background_color": "#ffffff",
   "display": "standalone",
