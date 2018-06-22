@@ -1,97 +1,96 @@
+<a class="mdl-navigation__link" onclick="page.load('login.html')">
+  <div id="tt1" class="icon material-icons">launch</div>
+  Login
+</a>
 
-  <a class="mdl-navigation__link" onclick="page.load('login.html')">
-      <div id="tt1" class="icon material-icons">launch</div>
-      Login
-  </a>
+{{nav-body-separation}}
 
-  {{nav-body-separation}}
+<h4>Cadastro</h4>
+<form action="http://localhost:4567/bla" method="post">
+  <div class="mdl-textfield mdl-js-textfield" style="">
+    <input class="mdl-textfield__input" type="text" id="nome" name="nome">
+    <label class="mdl-textfield__label" for="nome">Nome</label>
+  </div>
 
-  <h4>Cadastro</h4>
-  <form action="http://localhost:4567/bla" method="post">
-    <div class="mdl-textfield mdl-js-textfield" style="">
-      <input class="mdl-textfield__input" type="text" id="nome" name="nome">
-      <label class="mdl-textfield__label" for="nome">Nome</label>
-    </div>
+  <br>
+
+  <div class="mdl-textfield mdl-js-textfield">
+    <input class="mdl-textfield__input" type="text" id="email" name="email">
+    <label class="mdl-textfield__label" for="email">E-mail</label>
+  </div>
+
+  <br>
+
+  <div class="mdl-textfield mdl-js-textfield">
+    <input class="mdl-textfield__input" type="password" id="senha" name="senha">
+    <label class="mdl-textfield__label" for="senha">Senha</label>
+  </div>
+
+  <br>
+
+  <div class="mdl-textfield mdl-js-textfield">
+    <input class="mdl-textfield__input" type="password" id="confima_senha" id="name_senha">
+    <label class="mdl-textfield__label" for="confirma_senha">Confirmar Senha</label>
+  </div>
+
+
+  <br>
+
+  <div class="mdl-textfield mdl-js-textfield">
+    <input class="mdl-textfield__input" type="text" id="celular" name="celular">
+    <label class="mdl-textfield__label" for="celular">Telefone celular</label>
+  </div>
+
+  <br>
+
+  <div style="text-align:left; display: inline-block">
+
+    <h5> Tipo de prioridade </h5>
+
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="prnada">
+      <input type="radio" id="prnada" class="mdl-radio__button" name="tipo_prioridade" value="sem_prioridade" checked>
+      <span class="mdl-radio__label">Sem Prioridade</span>
+    </label>
+
+    <br>
+
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="praposentado">
+      <input type="radio" id="praposentado" class="mdl-radio__button" name="tipo_prioridade" value="aposentado">
+      <span class="mdl-radio__label">Aposentado</span>
+    </label>
 
     <br>
 
-    <div class="mdl-textfield mdl-js-textfield">
-      <input class="mdl-textfield__input" type="text" id="email" name="email">
-      <label class="mdl-textfield__label" for="email">E-mail</label>
-    </div>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="prdeficiente">
+      <input type="radio" id="prdeficiente" class="mdl-radio__button" name="tipo_prioridade" value="deficiente">
+      <span class="mdl-radio__label">Deficiente</span>
+    </label>
 
     <br>
 
-    <div class="mdl-textfield mdl-js-textfield">
-      <input class="mdl-textfield__input" type="password" id="senha" name="senha">
-      <label class="mdl-textfield__label" for="senha">Senha</label>
-    </div>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="pridoso">
+      <input type="radio" id="pridoso" class="mdl-radio__button" name="tipo_prioridade" value="idoso">
+      <span class="mdl-radio__label">Idoso</span>
+    </label>
 
     <br>
 
-    <div class="mdl-textfield mdl-js-textfield">
-      <input class="mdl-textfield__input" type="password" id="confima_senha" id="name_senha">
-      <label class="mdl-textfield__label" for="confirma_senha">Confirmar Senha</label>
-    </div>
-
-
-    <br>
-
-    <div class="mdl-textfield mdl-js-textfield">
-      <input class="mdl-textfield__input" type="text" id="celular" name="celular">
-      <label class="mdl-textfield__label" for="celular">Telefone celular</label>
-    </div>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="probeso">
+      <input type="radio" id="probeso" class="mdl-radio__button" name="tipo_prioridade" value="obeso">
+      <span class="mdl-radio__label">Obeso</span>
+    </label>
 
     <br>
 
-    <div style="text-align:left; display: inline-block">
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="prcolo">
+      <input type="radio" id="prcolo" class="mdl-radio__button" name="tipo_prioridade" value="colo">
+      <span class="mdl-radio__label">Pessoa com criança de colo</span>
+    </label>
+  </div>
 
-      <h5> Tipo de prioridade </h5>
-
-      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="prnada">
-        <input type="radio" id="prnada" class="mdl-radio__button" name="tipo_prioridade" value="sem_prioridade" checked>
-        <span class="mdl-radio__label">Sem Prioridade</span>
-      </label>
-
-      <br>
-
-      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="praposentado">
-        <input type="radio" id="praposentado" class="mdl-radio__button" name="tipo_prioridade" value="aposentado">
-        <span class="mdl-radio__label">Aposentado</span>
-      </label>
-
-      <br>
-
-      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="prdeficiente">
-        <input type="radio" id="prdeficiente" class="mdl-radio__button" name="tipo_prioridade" value="deficiente">
-        <span class="mdl-radio__label">Deficiente</span>
-      </label>
-
-      <br>
-
-      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="pridoso">
-        <input type="radio" id="pridoso" class="mdl-radio__button" name="tipo_prioridade" value="idoso">
-        <span class="mdl-radio__label">Idoso</span>
-      </label>
-
-      <br>
-
-      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="probeso">
-        <input type="radio" id="probeso" class="mdl-radio__button" name="tipo_prioridade" value="obeso">
-        <span class="mdl-radio__label">Obeso</span>
-      </label>
-
-      <br>
-
-      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="prcolo">
-        <input type="radio" id="prcolo" class="mdl-radio__button" name="tipo_prioridade" value="colo">
-        <span class="mdl-radio__label">Pessoa com criança de colo</span>
-      </label>
-    </div>
-
-    <br>
-    <br>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
-      Criar
-    </button>
-  </form>
+  <br>
+  <br>
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+    Criar
+  </button>
+</form>
