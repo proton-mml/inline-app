@@ -1,0 +1,8 @@
+
+
+
+Ver exemplo de PWA:
+    https://github.com/IncredibleWeb/pwa-tutorial
+
+Manifest e imgs/icons gerados por:
+    https://app-manifest.firebaseapp.com/
