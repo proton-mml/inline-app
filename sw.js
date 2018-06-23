@@ -27,7 +27,7 @@ self.addEventListener('fetch', function(event) {
         caches.match(event.request).then(function(response) {
             if (response) {
                 // retrieve from cache
-                return response;
+                // return response; // DESCOMENTAR ESSA LINHA NA PRODUCAO
             }
             // fetch as normal
             return fetch(event.request);

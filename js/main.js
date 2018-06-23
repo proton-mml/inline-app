@@ -13,14 +13,14 @@ if ('serviceWorker' in navigator) {
 window.addEventListener('online', function(e) {
     // re-sync data with server
     console.log("You are online");
-    // Page.hideOfflineWarning();
+    page.hideOffilineWarning();
     // Arrivals.loadData();
 }, false);
 
 window.addEventListener('offline', function(e) {
     // queue up events for server
     console.log("You are offline");
-    // Page.showOfflineWarning();
+    page.showOfflineWarning();
 }, false);
 
 // check if the user is connected
@@ -28,7 +28,8 @@ if (navigator.onLine) {
     // Arrivals.loadData();
 } else {
     // show offline message
-    // Page.showOfflineWarning();
+    page.showOfflineWarning();
 }
 
 page.load("login.html");
+$("#offline-content").hide();
