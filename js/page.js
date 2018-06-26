@@ -12,6 +12,7 @@ page.load = function (page, params, closeDrawer) {
             document.getElementById("page-content").innerHTML = resp[1];
             if (window[page]) window[page].load(params);
             pageStack.push({page: page, params: params});
+            console.log("Moving to page: " + page);
         } else  console.warn('Error retrieving: ' + page);
     }, "text");
 }

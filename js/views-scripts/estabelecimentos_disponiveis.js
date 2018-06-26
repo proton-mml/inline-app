@@ -11,10 +11,10 @@ estabelecimentos_disponiveis.lista = function (estabelecimentos) {
     var lista = $('#lista-estabelecimentos');
 
     var itens = estabelecimentos.map((est, i, e) => {
-        var item = $('<li class="clicker">').addClass('mdl-list__item');
+        var item = $('<li class="clicker" onclick="page.load(\'estabelecimento\', {nome: \'' + est.nome + '\' , email:  \'' + est.email + '\'})">').addClass('mdl-list__item');
         item.append($('<span>').addClass('mdl-list__item-primary-content')
                     .append($('<i>').addClass('material-icons mdl-list__item-icon').text('store_mall_directory'))
-                    .append(est.email));
+                    .append(est.nome));
         return item;
     });
 

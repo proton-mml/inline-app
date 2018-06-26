@@ -1,11 +1,11 @@
-<a class="mdl-navigation__link" onclick="page.load('cadastro.html')">
+<a class="mdl-navigation__link" onclick="page.load('cadastro.html', {}, true)">
     <div class="icon material-icons">add</div>
     Cadastrar-se
 </a>
 
 {{nav-body-separation}}
 
-  <form action="%sconn%loginurl%" method="post">
+  <form onsubmit="">
     <br>
     <h4>Login</h4>
     <div class="mdl-textfield mdl-js-textfield">
