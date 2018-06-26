@@ -8,7 +8,9 @@ pageStack.push = function (p) {
 }
 
 pageStack.back = function () {
-    _ = pageStack.stack.pop();
-    p = pageStack.stack.pop();
-    if (p) page.load(p.page, p.params);
+    if (pageStack.stack.length > 1) {
+        _ = pageStack.stack.pop();
+        p = pageStack.stack.pop();
+        if (p) page.load(p.page, p.params);
+    }
 }
