@@ -58,6 +58,7 @@
                 <span class="mdl-layout-title">Inline</span>
                 <!-- Add spacer, to align navigation to the right -->
                 <div class="mdl-layout-spacer"></div>
+                <div onclick="pageStack.back()" style="font-size: 44px;" class="clicker icon material-icons">keyboard_arrow_left</div>
               </div>
             </header>
             <div class="mdl-layout__drawer">
@@ -70,7 +71,7 @@
                 <div id="offline-content" class="page-content" style="text-align:center">
                     <br>
                     <h3>Você está offline.<br>
-                        <div id="tt1" class="icon material-icons">signal_wifi_off</div>
+                        <div class="icon material-icons">signal_wifi_off</div>
                     </h3>
                     <p>Conecte-se para continuar...</p>
                 </div>
@@ -83,6 +84,7 @@
             </main>
         </div>
         <!-- Main Scripts  -->
+        <script src="./js/pageStack.js"></script>
         <script src="./js/sconn.js"></script>
         <script src="./js/page.js"></script>
         <script src="./js/main.js"></script>

@@ -1,5 +1,5 @@
 
-page = {}
+page = {};
 
 page.load = function (page, params, closeDrawer) {
     let layout = document.querySelector('.mdl-layout');
@@ -11,7 +11,7 @@ page.load = function (page, params, closeDrawer) {
             document.querySelector(".mdl-navigation").innerHTML = resp[0];
             document.getElementById("page-content").innerHTML = resp[1];
             if (window[page]) window[page].load(params);
-            window.location.hash = page;
+            pageStack.push({page: page, params: params});
         } else  console.warn('Error retrieving: ' + page);
     }, "text");
 }

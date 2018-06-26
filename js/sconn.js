@@ -1,5 +1,5 @@
 
-sconn = {}
+sconn = {};
 
 sconn.baseURL = "http://35.231.149.80:3300";
 

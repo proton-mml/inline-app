@@ -21,10 +21,6 @@ window.addEventListener('offline', function(e) {
     page.showOfflineWarning();
 }, false);
 
-window.addEventListener('onhashchange', function(e) {
-    page.load(window.location.hash);
-}, false);
-
 // check if the user is connected
 if (navigator.onLine) {
     //load anything here
