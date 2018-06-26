@@ -1,7 +1,7 @@
 
 sconn = {};
 
-sconn.baseURL = "http://192.168.43.95:3300";
+sconn.baseURL = "http://35.231.149.80:3300";
 
 sconn.get = function (route, func) {
     $.get(sconn.baseURL + route, (data, status) => {
