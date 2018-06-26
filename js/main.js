@@ -1,5 +1,3 @@
-// import Page from './page';
-// import Offline from './offline';
 
 // register the service worker if available
 if ('serviceWorker' in navigator) {
@@ -14,7 +12,7 @@ window.addEventListener('online', function(e) {
     // re-sync data with server
     console.log("You are online");
     page.hideOffilineWarning();
-    // Arrivals.loadData();
+    //load anything here
 }, false);
 
 window.addEventListener('offline', function(e) {
@@ -23,13 +21,17 @@ window.addEventListener('offline', function(e) {
     page.showOfflineWarning();
 }, false);
 
+window.addEventListener('onhashchange', function(e) {
+    page.load(window.location.hash);
+}, false);
+
 // check if the user is connected
 if (navigator.onLine) {
-    // Arrivals.loadData();
+    //load anything here
 } else {
     // show offline message
     page.showOfflineWarning();
 }
 
-page.load("login.html");
+page.load("empresas_disponiveis");
 $("#offline-content").hide();

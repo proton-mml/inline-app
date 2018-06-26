@@ -1,16 +1,18 @@
 
 page = {}
 
-page.load = function (route) {
+page.load = function (page, params, closeDrawer) {
     let layout = document.querySelector('.mdl-layout');
-    if (layout.MaterialLayout) layout.MaterialLayout.toggleDrawer();
+    if (closeDrawer && layout.MaterialLayout) layout.MaterialLayout.toggleDrawer();
 
-    $.get(route, function(data, status) {
+    $.get(page + ".html", function(data, status) {
         if (status == "success") {
             resp = data.split("{{nav-body-separation}}");
             document.querySelector(".mdl-navigation").innerHTML = resp[0];
             document.getElementById("page-content").innerHTML = resp[1];
-        } else  console.warn('Error retrieving offline.html');
+            if (window[page]) window[page].load(params);
+            window.location.hash = page;
+        } else  console.warn('Error retrieving: ' + page);
     }, "text");
 }
 
