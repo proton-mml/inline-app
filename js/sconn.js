@@ -15,9 +15,9 @@ sconn.get = function (route, succ_callback, err_callback) {
             resp = JSON.parse(data);
             succ_callback(resp);
         },
-        error: (_, __, err) => {
-            console.log ("Error in sconn, for route: " + route + " #Err: " + err);
-            if (err_callback) err_callback(_, __, err);
+        error: (_, errstr, __) => {
+            console.log ("Error in sconn, for route: " + route + " #Err: " + errstr);
+            if (err_callback) err_callback(_, errstr, __);
         }
     });
 };
@@ -35,9 +35,9 @@ sconn.post = function (route, body, succ_callback, err_callback) {
             resp = JSON.parse(data);
             succ_callback(resp);
         },
-        error: (_, __, err) => {
-            console.log ("Error in sconn, for route: " + route + " #Err: " + err);
-            if (err_callback) err_callback(_, __, err);
+        error: (_, errstr, __) => {
+            console.log ("Error in sconn, for route: " + route + " #Err: " + errstr);
+            if (err_callback) err_callback(_, errstr, __);
         }
     });
 };
