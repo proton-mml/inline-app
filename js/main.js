@@ -29,5 +29,5 @@ if (navigator.onLine) {
     page.showOfflineWarning();
 }
 
-page.load("cadastro");
+page.load("login");
 $("#offline-content").hide();

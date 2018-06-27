@@ -14,7 +14,7 @@ cadastro.submit = function() {
         page.showToast('Verifique se os seus dados foram digitados corretamente');
 
 
-    let jsao = {
+    let cadastro_usuario = {
         nome:       $('#nome').val(),
         email:      $('#email').val(),
         celular:    $('#celular').val(),
@@ -22,9 +22,6 @@ cadastro.submit = function() {
         senha:      $('#senha').val(),
     };
 
-    
-    
-    console.log(jsao);
-
+    sconn.get("/cadastro", cadastro_usuario);
 }
 
