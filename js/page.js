@@ -10,6 +10,7 @@ page.load = function (page, params, closeDrawer) {
             resp = data.split("{{nav-body-separation}}");
             document.querySelector(".mdl-navigation").innerHTML = resp[0];
             document.getElementById("page-content").innerHTML = resp[1];
+            componentHandler.upgradeDom();
             if (window[page] && window[page].load) window[page].load(params);
             pageStack.push({page: page, params: params});
             console.log("Moving to page: " + page);
