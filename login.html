@@ -1,26 +1,23 @@
-<a class="mdl-navigation__link" onclick="page.load('cadastro.html', {}, true)">
+<a class="mdl-navigation__link" onclick="page.load('cadastro', {}, true)">
     <div class="icon material-icons">add</div>
     Cadastrar-se
 </a>
 
 {{nav-body-separation}}
 
-  <form onsubmit="login.submit()">
-    <br>
-    <h4>Login</h4>
-    <div class="mdl-textfield mdl-js-textfield">
-      <input class="mdl-textfield__input" type="text" id="email" name="email">
-      <label class="mdl-textfield__label" for="email">E-mail</label>
-    </div>
-    <br>
+<h4>Login</h4>
+<div class="mdl-textfield mdl-js-textfield">
+  <input class="mdl-textfield__input" type="text" id="email" name="email">
+  <label class="mdl-textfield__label" for="email">E-mail</label>
+</div>
+<br>
 
-    <div class="mdl-textfield mdl-js-textfield">
-      <input class="mdl-textfield__input" type="password" id="senha" name="senha">
-      <label class="mdl-textfield__label" for="senha">Senha</label>
-    </div>
-    <br>
+<div class="mdl-textfield mdl-js-textfield">
+  <input class="mdl-textfield__input" type="password" id="senha" name="senha">
+  <label class="mdl-textfield__label" for="senha">Senha</label>
+</div>
+<br>
 
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-      Login
-    </button>
-  </form>
+<button onclick="login.submit()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+  Login
+</button>
