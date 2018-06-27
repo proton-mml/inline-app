@@ -6,12 +6,12 @@ cadastro.submit = function() {
         return;
     };
 
-    if (($('#nome').val().length < 2) ||
-        ($('#email').val().length < 2) ||
-        ($('#celular').val().length < 2) ||
-        ($('input[name=tipo_prioridade]:checked').val()) ||
-        ($('#senha').val().length < 2))
-        page.showToast('Verifique se os seus dados foram digitados corretamente');
+    // if (($('#nome').val().length < 2) ||
+    //     ($('#email').val().length < 2) ||
+    //     ($('#celular').val().length < 2) ||
+    //     ($('input[name=tipo_prioridade]:checked').val().length < 2) ||
+    //     ($('#senha').val().length < 2))
+    //     page.showToast('Verifique se os seus dados foram digitados corretamente');
 
 
     let cadastro_usuario = {
@@ -22,6 +22,6 @@ cadastro.submit = function() {
         senha:      $('#senha').val(),
     };
 
-    sconn.get("/cadastro", cadastro_usuario);
+    sconn.post("/cadastrar", cadastro_usuario, console.log, console.log);
 }
 
