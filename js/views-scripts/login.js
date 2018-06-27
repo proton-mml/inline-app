@@ -8,10 +8,11 @@ login.submit = function () {
         console.log(answer);
         if (answer.success) {
             sconn.token = answer.token;
-            page.load('perfil');
+            pageStack.clean();
+            page.load('empresas_disponiveis');
         }
         else {
-            console.log("Not logged");
+            page.showToast("Erro: " + answer.error);
         }
     });
     return false;

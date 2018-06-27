@@ -27,3 +27,8 @@ page.showOfflineWarning= function() {
     $("#offline-content").show();
     $("#page-content").hide();
 }
+
+page.showToast = function (message) {
+    let snackbarContainer = document.querySelector('#info-toaster');
+    snackbarContainer.MaterialSnackbar.showSnackbar({message: message});
+}

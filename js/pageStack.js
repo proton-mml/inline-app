@@ -14,3 +14,7 @@ pageStack.back = function () {
         if (p) page.load(p.page, p.params);
     }
 }
+
+pageStack.clean = function () {
+    pageStack.stack = [];
+}
