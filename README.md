@@ -7,11 +7,11 @@ index.html on your browser. For better pwa experience, we recommend using http-s
 ```
   $ sudo npm install http-server -g
   ```
-  
+
 ### Running
 ```
   $ http-server . -o
 ```
 
-##Without http-server
+## Without http-server
 Just open index.html on your browser.
