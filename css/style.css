@@ -20,3 +20,11 @@
     color: #787878;
     font-size: 0.8em;
 }
+
+.stars {
+    min-width: 150px;
+}
+
+#estab_info i {
+    font-style: normal
+}

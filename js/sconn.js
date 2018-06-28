@@ -2,6 +2,7 @@ sconn = {};
 
 sconn.token = "";
 sconn.baseURL = "http://35.231.149.80:3300";
+sconn.baseURL = "http://192.168.0.16:3300";
 
 sconn.get = function (route, succ_callback, err_callback) {
     let body = {token: sconn.token};
