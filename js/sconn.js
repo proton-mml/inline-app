@@ -36,3 +36,32 @@ sconn.post = function (route, body, succ_callback, err_callback) {
         }
     });
 };
+
+sconn.login = function (email, senha, succ_callback) {
+    sconn.post("/autorizar", {email: email, senha: senha}, (answer) => {
+        if (answer.success) {
+            sconn.token = answer.token;
+            localStorage.setItem("token", sconn.token);
+            pageStack.clean();
+            page.load('empresas_disponiveis');
+        }
+        else {
+            page.showToast("Erro: " + answer.error);
+        }
+    });
+}
+
+sconn.logout = function () {
+    sconn.token = "";
+    localStorage.removeItem ("token");
+    page.load("login", {}, true);
+    page.showToast("Você está deslogado");
+}
+
+sconn.token = localStorage.getItem("token");
+if (sconn.token) {
+    pageStack.clean();
+    page.load('empresas_disponiveis');
+} else {
+    page.load("login");
+}

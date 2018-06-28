@@ -29,5 +29,4 @@ if (navigator.onLine) {
     page.showOfflineWarning();
 }
 
-page.load("login");
 $("#offline-content").hide();
