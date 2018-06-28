@@ -6,14 +6,6 @@ cadastro.submit = function() {
         return;
     };
 
-    // if (($('#nome').val().length < 2) ||
-    //     ($('#email').val().length < 2) ||
-    //     ($('#celular').val().length < 2) ||
-    //     ($('input[name=tipo_prioridade]:checked').val().length < 2) ||
-    //     ($('#senha').val().length < 2))
-    //     page.showToast('Verifique se os seus dados foram digitados corretamente');
-
-
     let cadastro_usuario = {
         nome:       $('#nome').val(),
         email:      $('#email').val(),
@@ -22,6 +14,19 @@ cadastro.submit = function() {
         senha:      $('#senha').val(),
     };
 
-    sconn.post("/cadastrar", cadastro_usuario, console.log, console.log);
+    if ((cadastro_usuario.nome.length < 2) ||
+        (cadastro_usuario.email.length < 2) ||
+        (cadastro_usuario.celular.length < 2) ||
+        (cadastro_usuario.senha.length < 2)) {
+        page.showToast('Verifique se os seus dados foram digitados corretamente');
+        return;
+    }
+
+    sconn.post("/cadastrar", cadastro_usuario, (resp) => {
+        page.showToast('Cadastro realizado com sucesso');
+        page.load('login');
+    }, (resp) => {
+        page.showToast('Algo deu errado');
+    });
 }
 

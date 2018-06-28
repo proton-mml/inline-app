@@ -2,7 +2,8 @@
 estabelecimentos_disponiveis = {}
 
 estabelecimentos_disponiveis.load = function (params) {
-    sconn.post("/estabelecimentos", {"email": params.email},  (estabelecimentos) => {
+    console.log(params);
+    sconn.post("/estabelecimentos", {"email_empresa": params.email},  (estabelecimentos) => {
         estabelecimentos_disponiveis.lista(estabelecimentos);
     });
 }
@@ -10,6 +11,7 @@ estabelecimentos_disponiveis.load = function (params) {
 estabelecimentos_disponiveis.lista = function (estabelecimentos) {
     var lista = $('#lista-estabelecimentos');
 
+    console.log(estabelecimentos);
     var itens = estabelecimentos.map((est, i, e) => {
         var item = $('<li class="clicker" onclick="page.load(\'estabelecimento\', {nome: \'' + est.nome + '\' , email:  \'' + est.email + '\'})">').addClass('mdl-list__item');
         item.append($('<span>').addClass('mdl-list__item-primary-content')
