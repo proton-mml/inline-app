@@ -7,8 +7,8 @@ estabelecimento = {}
 
 estabelecimento.load = function (params) {
     $("#title").html(params.nome);
-    sconn.post("/avaliacoes", {email: params.email}, (avaliacoes) => {
-        estabelecimento.lista_avaliacoes(avaliacoes);
+    sconn.post("/avaliacoes", {email: params.email}, (data) => {
+        estabelecimento.lista_avaliacoes(data.answer);
     });
 
     sconn.post('/estabelecimento', {email_estabelecimento: params.email},
