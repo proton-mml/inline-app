@@ -1,18 +1,43 @@
 
-function lista_avaliacoes(avs) {
-}
-
-
 estabelecimento = {}
+//
+// fils = [
+//     {
+//         "_id": 1,
+//         "tamanho": 2,
+//         "cronologica": [],
+//         "agendada": [1,2]
+//     },
+//     {
+//         "_id": 1,
+//         "tamanho": 0,
+//         "cronologica": [1,2],
+//         "agendada": []
+//     },
+//     {
+//         "_id": 1,
+//         "tamanho": 4,
+//         "cronologica": [1],
+//         "agendada": []
+//     }
+// ];
 
 estabelecimento.load = function (params) {
     $("#title").html(params.nome);
+    estabelecimento.nome = params.nome;
     sconn.post("/avaliacoes", {email: params.email}, (data) => {
         estabelecimento.lista_avaliacoes(data.answer);
     });
 
     sconn.post('/estabelecimento', {email_estabelecimento: params.email},
                (data) => estabelecimento.showInfo(data.answer));
+
+   sconn.post('/filas_ativas', {email: params.email},
+              (data) => {
+                  estabelecimento.showFilas(data.answer)
+              });
+
+    // estabelecimento.showFilas(fils);
 };
 
 estabelecimento.showInfo = function (estabelecimento) {
@@ -23,10 +48,6 @@ estabelecimento.showInfo = function (estabelecimento) {
     $('#cidade').html(endereco.cidade);
     $('#estado').html(endereco.estado);
 }
-
-// estabelecimento.endereco = function (end) {
-
-// }
 
 estabelecimento.lista_avaliacoes = function (avs) {
     var lista = $('#avaliacoes');
@@ -43,15 +64,15 @@ estabelecimento.lista_avaliacoes = function (avs) {
     lista.append(itens);
 } ;
 
-estabelecimento.lista_filas = function(filas){
+estabelecimento.showFilas = function(filas){
     var lista = $('#filas');
     var itens = filas.map((fila, i, e) => {
-        var item = $('<li>').addClass('mdl-list__item');
-        var stars = $('<span>');
+        let type = (fila.cronologica ? "Cronológica" : "Agendada") + ": ";
+        let tamanho = " Tamanho: " + fila.tamanho;
+        var item = $('<li class="clicker" onclick="page.load(\'fila\', {\'fila\': \'' + fila._id + '\', \'estabelecimento\':  \'' + estabelecimento.nome + '\'})">').addClass('mdl-list__item');
         item.append($('<span>').addClass('mdl-list__item-primary-content')
-                    .append());
+                    .append($("<b>").text(type)).append(tamanho));
         return item;
     });
-
     lista.append(itens);
 }

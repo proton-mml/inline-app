@@ -1,36 +1,36 @@
-  <a class="mdl-navigation__link" href="#">
-      <div class="icon material-icons">undo</div>
-      Sair
-  </a>
+<a class="mdl-navigation__link" onclick="sconn.logout(true)">
+    <div class="icon material-icons">undo</div>
+    Sair
+</a>
 
   {{nav-body-separation}}
 
-  <h4>Fila YYYY</h4>
+  <h4 id="title">Fila </h4>
   <div id="fora">
     <ul class="mdl-list">
       <li class="mdl-list__item">
         <span class="mdl-list__item-primary-content">
-          <span id="no_pessoas">Número de pessoas na fila: 40</span>
+          <span id="no_pessoas"></span>
         </span>
       </li>
       <li class="mdl-list__item">
         <span class="mdl-list__item-primary-content">
-          <span id="nome_estabelecimento">Nome do estabelecimento: Fanfa</span>
+          <span id="nome_estabelecimento"></span>
         </span>
       </li>
       <li class="mdl-list__item">
         <span class="mdl-list__item-primary-content">
-          <span id="data_hora_inicio">5/5/2018 15h15</span>
+          <span id="data_hora_inicio"></span>
         </span>
       </li>
       <li class="mdl-list__item">
         <span class="mdl-list__item-primary-content">
-          <span id="data_hora_fim">6/6/2018 14h14</span>
+          <span id="data_hora_fim"></span>
         </span>
       </li>
     </ul>
 
-    <button style="margin-top: 30px" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+    <button onclick="fila.getIn()" style="margin-top: 30px" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
       Entrar na fila
     </button>
   </div>
@@ -43,7 +43,7 @@
       </div>
     </div>
     <br>
-    <button style="margin-top: 30px" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+    <button  onclick="fila.getOut()" style="margin-top: 30px" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
       Sair da Fila
     </button>
   </div>
