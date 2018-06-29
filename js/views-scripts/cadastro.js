@@ -23,10 +23,9 @@ cadastro.submit = function() {
     }
 
     sconn.post("/cadastrar", cadastro_usuario, (resp) => {
-        page.showToast('Cadastro realizado com sucesso');
-        page.load('login');
-    }, (resp) => {
-        page.showToast('Algo deu errado');
+        if(resp.success) {
+            page.showToast('Cadastro realizado com sucesso');
+            page.load('login');
+        } else page.showToast('Algo deu errado');
     });
 }
-

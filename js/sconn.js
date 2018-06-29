@@ -2,7 +2,7 @@ sconn = {};
 
 sconn.token = "";
 sconn.baseURL = "http://35.231.149.80:3300";
-sconn.baseURL = "http://192.168.0.16:3300";
+sconn.baseURL = "http://192.168.0.109:3300"
 
 sconn.get = function (route, succ_callback, err_callback) {
     let body = {token: sconn.token};
@@ -12,7 +12,11 @@ sconn.get = function (route, succ_callback, err_callback) {
         data: body,
         success: (data) => {
             resp = JSON.parse(data);
-            succ_callback(resp);
+            if (resp.success) succ_callback(resp);
+            else {
+                if (resp.error == "token invalido") sconn.logout(false);
+                else succ_callback(resp);
+            }
         },
         error: (_, errstr, __) => {
             console.log ("Error in sconn, for route: " + route + " #Err: " + errstr);
@@ -29,7 +33,11 @@ sconn.post = function (route, body, succ_callback, err_callback) {
         dataType: "text",
         success: (data) => {
             resp = JSON.parse(data);
-            succ_callback(resp);
+            if (resp.success) succ_callback(resp);
+            else {
+                if (resp.error == "token invalido") sconn.logout(false);
+                else succ_callback(resp);
+            }
         },
         error: (_, errstr, __) => {
             console.log ("Error in sconn, for route: " + route + " #Err: " + errstr);
@@ -38,7 +46,7 @@ sconn.post = function (route, body, succ_callback, err_callback) {
     });
 };
 
-sconn.login = function (email, senha, succ_callback) {
+sconn.login = function (email, senha) {
     sconn.post("/autorizar", {email: email, senha: senha}, (answer) => {
         if (answer.success) {
             sconn.token = answer.token;
@@ -52,10 +60,11 @@ sconn.login = function (email, senha, succ_callback) {
     });
 }
 
-sconn.logout = function () {
+sconn.logout = function (closeDrawer) {
     sconn.token = "";
     localStorage.removeItem ("token");
-    page.load("login", {}, true);
+    pageStack.clean();
+    page.load("login", {}, closeDrawer);
     page.showToast("Você está deslogado");
 }
 

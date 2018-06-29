@@ -12,11 +12,10 @@ estabelecimento.load = function (params) {
     });
 
     sconn.post('/estabelecimento', {email_estabelecimento: params.email},
-               estabelecimento.showInfo);
+               (data) => estabelecimento.showInfo(data.answer));
 };
 
 estabelecimento.showInfo = function (estabelecimento) {
-    console.log(estabelecimento);
     var endereco = estabelecimento.endereco;
     $('#logradouro').html(endereco.logradouro);
     $('#endnumero').html(endereco.numero);
@@ -26,7 +25,7 @@ estabelecimento.showInfo = function (estabelecimento) {
 }
 
 // estabelecimento.endereco = function (end) {
-    
+
 // }
 
 estabelecimento.lista_avaliacoes = function (avs) {

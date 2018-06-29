@@ -2,8 +2,8 @@
 empresas_disponiveis = {}
 
 empresas_disponiveis.load = function () {
-    sconn.post("/empresas", {}, (empresas) => {
-        empresas_disponiveis.lista(empresas);
+    sconn.post("/empresas", {}, (data) => {
+        empresas_disponiveis.lista(data.answer);
     });
 }
 
