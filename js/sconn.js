@@ -4,7 +4,7 @@ sconn.token = "";
 sconn.baseURL = "http://35.231.149.80:3300";
 sconn.baseURL = "http://192.168.0.109:3300"
 
-sconn.get = function (route, succ_callback, err_callback) {
+sconn.get = function (route, succ_callback) {
     let body = {token: sconn.token};
     $.get({
         url: sconn.baseURL + route,
@@ -20,12 +20,12 @@ sconn.get = function (route, succ_callback, err_callback) {
         },
         error: (_, errstr, __) => {
             console.log ("Error in sconn, for route: " + route + " #Err: " + errstr);
-            if (err_callback) err_callback(_, errstr, __);
+            page.showToast("Falha na comunicação com servidor: " + errstr);
         }
     });
 };
 
-sconn.post = function (route, body, succ_callback, err_callback) {
+sconn.post = function (route, body, succ_callback) {
     body.token = sconn.token;
     $.post({
         url: sconn.baseURL + route,
@@ -41,7 +41,7 @@ sconn.post = function (route, body, succ_callback, err_callback) {
         },
         error: (_, errstr, __) => {
             console.log ("Error in sconn, for route: " + route + " #Err: " + errstr);
-            if (err_callback) err_callback(_, errstr, __);
+            page.showToast("Falha na comunicação com servidor: " + errstr);
         }
     });
 };
