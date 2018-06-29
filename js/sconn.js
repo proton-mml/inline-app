@@ -6,11 +6,13 @@ sconn.baseURL = "http://192.168.0.109:3300"
 
 sconn.get = function (route, succ_callback) {
     let body = {token: sconn.token};
+    $("#loading-overlay").show();
     $.get({
         url: sconn.baseURL + route,
         dataType: "text",
         data: body,
         success: (data) => {
+            $("#loading-overlay").hide();
             resp = JSON.parse(data);
             if (resp.success) succ_callback(resp);
             else {
@@ -19,6 +21,7 @@ sconn.get = function (route, succ_callback) {
             }
         },
         error: (_, errstr, __) => {
+            $("#loading-overlay").hide();
             console.log ("Error in sconn, for route: " + route + " #Err: " + errstr);
             page.showToast("Falha na comunicação com servidor: " + errstr);
         }
@@ -27,11 +30,13 @@ sconn.get = function (route, succ_callback) {
 
 sconn.post = function (route, body, succ_callback) {
     body.token = sconn.token;
+    $("#loading-overlay").show();
     $.post({
         url: sconn.baseURL + route,
         data: body,
         dataType: "text",
         success: (data) => {
+            $("#loading-overlay").hide();
             resp = JSON.parse(data);
             if (resp.success) succ_callback(resp);
             else {
@@ -40,6 +45,7 @@ sconn.post = function (route, body, succ_callback) {
             }
         },
         error: (_, errstr, __) => {
+            $("#loading-overlay").hide();
             console.log ("Error in sconn, for route: " + route + " #Err: " + errstr);
             page.showToast("Falha na comunicação com servidor: " + errstr);
         }

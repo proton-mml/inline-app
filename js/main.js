@@ -30,3 +30,4 @@ if (navigator.onLine) {
 }
 
 $("#offline-content").hide();
+$("#loading-overlay").hide();
