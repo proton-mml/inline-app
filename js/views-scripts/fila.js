@@ -34,8 +34,8 @@ fila.load = function (params) {
 
 fila.showInfo = function (f, e) {
     let endereco = estabelecimento.endereco;
-    let inicio = new Date(f.data_hora_inicio).toLocaleString();
-    let fim = new Date(f.data_hora_fim).toLocaleString();
+    let inicio = (new Date(f.data_hora_inicio)).toLocaleString();
+    let fim = (new Date(f.data_hora_fim)).toLocaleString();
     $("#title").html(f.cronologica? "Fila Cronológica" : "Fila Agendada");
     $('#no_pessoas').append(f.tamanho);
     $('#nome_estabelecimento').append($("<b>").text("Estabelecimento: ")).append(e);
