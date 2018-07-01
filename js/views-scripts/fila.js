@@ -37,7 +37,7 @@ fila.showInfo = function (f, e) {
     let inicio = new Date(f.data_hora_inicio).toLocaleString();
     let fim = new Date(f.data_hora_fim).toLocaleString();
     $("#title").html(f.cronologica? "Fila Cronológica" : "Fila Agendada");
-    $('#no_pessoas').append($("<b>").text("Tamanho: ")).append(f.tamanho);
+    $('#no_pessoas').append(f.tamanho);
     $('#nome_estabelecimento').append($("<b>").text("Estabelecimento: ")).append(e);
     $('#data_hora_inicio').append($("<b>").text("Inicio: ")).append(inicio);
     $('#data_hora_fim').append($("<b>").text("Fim: ")).append(fim);
@@ -61,7 +61,7 @@ fila.getOut = function () {
             $("#fora").show();
             $("#dentro").hide();
             page.showToast("Você saiu da fila");
-            $("nro_pessoas").html(Number($("#nro_pessoas").html()) - 1);
+            $("#no_pessoas").html(Number($("#no_pessoas").html())-1);
         }
         else page.showToast(data.error);
     });
