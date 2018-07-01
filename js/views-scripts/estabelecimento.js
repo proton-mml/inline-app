@@ -1,30 +1,10 @@
 
 estabelecimento = {}
-//
-// fils = [
-//     {
-//         "_id": 1,
-//         "tamanho": 2,
-//         "cronologica": [],
-//         "agendada": [1,2]
-//     },
-//     {
-//         "_id": 1,
-//         "tamanho": 0,
-//         "cronologica": [1,2],
-//         "agendada": []
-//     },
-//     {
-//         "_id": 1,
-//         "tamanho": 4,
-//         "cronologica": [1],
-//         "agendada": []
-//     }
-// ];
 
-estabelecimento.load = function (params) {
+estabelecimento.load = function(params) {
     $("#title").html(params.nome);
     estabelecimento.nome = params.nome;
+    estabelecimento.email = params.email;
     sconn.post("/avaliacoes", {email: params.email}, (data) => {
         estabelecimento.lista_avaliacoes(data.answer);
     });
@@ -32,7 +12,7 @@ estabelecimento.load = function (params) {
     sconn.post('/estabelecimento', {email_estabelecimento: params.email},
                (data) => estabelecimento.showInfo(data.answer));
 
-   sconn.post('/filas_ativas', {email: params.email},
+    sconn.post('/filas_ativas', {email: params.email},
               (data) => {
                   estabelecimento.showFilas(data.answer)
               });
@@ -40,7 +20,7 @@ estabelecimento.load = function (params) {
     // estabelecimento.showFilas(fils);
 };
 
-estabelecimento.showInfo = function (estabelecimento) {
+estabelecimento.showInfo = function(estabelecimento) {
     var endereco = estabelecimento.endereco;
     $('#logradouro').html(endereco.logradouro);
     $('#endnumero').html(endereco.numero);
@@ -49,7 +29,7 @@ estabelecimento.showInfo = function (estabelecimento) {
     $('#estado').html(endereco.estado);
 }
 
-estabelecimento.lista_avaliacoes = function (avs) {
+estabelecimento.lista_avaliacoes = function(avs) {
     var lista = $('#avaliacoes');
     var itens = avs.map((av, i, e) => {
         var item = $('<li>').addClass('mdl-list__item');
@@ -64,7 +44,7 @@ estabelecimento.lista_avaliacoes = function (avs) {
     lista.append(itens);
 } ;
 
-estabelecimento.showFilas = function(filas){
+estabelecimento.showFilas = function(filas) {
     var lista = $('#filas');
     var itens = filas.map((fila, i, e) => {
         let type = (fila.cronologica ? "Cronológica" : "Agendada") + ": ";
@@ -75,4 +55,19 @@ estabelecimento.showFilas = function(filas){
         return item;
     });
     lista.append(itens);
+}
+
+estabelecimento.submitAvaliacao = function() {
+    var num_estrelas = $("#select_estrelas").val();
+    var comentario = $("#texto_comentario").val();
+
+    sconn.post('/avalia', {
+        estrelas: num_estrelas,
+        comentario: comentario,
+        email_estabelecimento: estabelecimento.email,
+        email_cliente: sconn.user_email
+    });
+
+    page.load('estabelecimento', {nome: estabelecimento.nome,
+                                  email: estabelecimento.email});
 }

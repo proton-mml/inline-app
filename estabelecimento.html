@@ -19,6 +19,34 @@
     <h5> Avaliações </h5>
     <ul class="mdl-list" style="display:inline-block" id="avaliacoes">
     </ul>
+    <div>
+      <br>
+      <div class="mdl-textfield mdl-js-textfield">
+        <textarea class="mdl-textfield__input" type="text" rows= "3" id="texto_comentario" ></textarea>
+        <label class="mdl-textfield__label" for="texto_comentario">Comentário...</label>
+      </div>
+
+      <br>
+
+      <div>
+        <label for="select_estrelas"> Estrelas </label>
+        <select id="select_estrelas">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5" selected>5</option>
+        </select>
+      </div>
+
+      <br>
+      
+      <button onclick="estabelecimento.submitAvaliacao()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+        Enviar 
+      </button>
+
+    </div>
   </div>
 
 </div>
