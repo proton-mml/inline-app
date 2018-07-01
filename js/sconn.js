@@ -2,7 +2,7 @@ sconn = {};
 
 sconn.token = "";
 // sconn.baseURL = "http://35.231.149.80:3300";
-sconn.baseURL = "http://192.168.0.109:3300"
+sconn.baseURL = "http://localhost:3300";
 
 sconn.get = function (route, succ_callback) {
     let body = {token: sconn.token};
@@ -56,9 +56,9 @@ sconn.login = function (email, senha) {
     sconn.post("/autorizar", {email: email, senha: senha}, (answer) => {
         if (answer.success) {
             sconn.token = answer.token;
-            sconn.email = email;
+            sconn.user_email = email;
             localStorage.setItem("token", sconn.token);
-            localStorage.setItem("email", sconn.email);
+            localStorage.setItem("email", sconn.user_email);
             pageStack.clean();
             page.load('empresas_disponiveis');
         }
@@ -69,12 +69,12 @@ sconn.login = function (email, senha) {
 }
 
 sconn.getLoggedUser = function () {
-    return sconn.email
+    return sconn.user_email
 }
 
 sconn.logout = function (closeDrawer) {
     sconn.token = "";
-    sconn.email = email = "";
+    sconn.user_email = email = "";
     localStorage.removeItem ("token");
     localStorage.removeItem ("email");
     pageStack.clean();
@@ -83,10 +83,12 @@ sconn.logout = function (closeDrawer) {
 }
 
 sconn.token = localStorage.getItem("token");
+
+
 if (sconn.token) {
     pageStack.clean();
-    sconn.email = localStorage.getItem("email");
+    sconn.user_email = localStorage.getItem("user_email");
     page.load('empresas_disponiveis');
 } else {
-    page.load("login");
+    page.load("login"); // debug
 }
