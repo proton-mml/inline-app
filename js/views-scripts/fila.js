@@ -18,7 +18,7 @@ fila.load = function (params) {
     fila.id = params.fila;
     sconn.post("/fila", {id: params.fila}, (data) => {
         fila.showInfo(data.answer, params.estabelecimento);
-        if (fila.cronologica) {
+        if (data.answer.cronologica) {
             sconn.post("/fila/posicao", {id_fila: params.fila, email: sconn.getLoggedUser()}, (data2) => {
                 if (data2.success) {
                     if (data2.answer.posicao) {
@@ -28,7 +28,7 @@ fila.load = function (params) {
                     }
                 } else page.showToast(data2.error);
             });
-        }
+        } else page.showToast ("Filas agendadas não suportadas no momento");
     });
 };
 

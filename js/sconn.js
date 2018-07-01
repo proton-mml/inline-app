@@ -83,11 +83,8 @@ sconn.logout = function (closeDrawer) {
 }
 
 sconn.token = localStorage.getItem("token");
-
-
+sconn.user_email = localStorage.getItem("email");
 if (sconn.token) {
-    pageStack.clean();
-    sconn.user_email = localStorage.getItem("user_email");
     page.load('empresas_disponiveis');
 } else {
     page.load("login"); // debug
