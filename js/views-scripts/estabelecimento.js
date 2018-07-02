@@ -66,8 +66,9 @@ estabelecimento.submitAvaliacao = function() {
         comentario: comentario,
         email_estabelecimento: estabelecimento.email,
         email_cliente: sconn.user_email
+    }, (data) => {
+        if (data.success) pageStack.reload('estabelecimento', {nome: estabelecimento.nome,
+                                          email: estabelecimento.email});
+        else page.showToast("Erro. Tente novamente, por favor.");
     });
-
-    page.load('estabelecimento', {nome: estabelecimento.nome,
-                                  email: estabelecimento.email});
 }

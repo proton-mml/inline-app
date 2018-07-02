@@ -14,6 +14,7 @@ page.load = function (page, params, closeDrawer) {
             if (window[page] && window[page].load) window[page].load(params);
             pageStack.push({page: page, params: params});
             console.log("Moving to page: " + page);
+            page.current = page;
         } else  console.warn('Error retrieving: ' + page);
     }, "text");
 }

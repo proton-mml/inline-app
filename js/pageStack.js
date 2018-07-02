@@ -15,6 +15,13 @@ pageStack.back = function () {
     }
 }
 
+pageStack.reload = function () {
+    if (pageStack.stack.length > 1) {
+        p = pageStack.stack.pop();
+        if (p) page.load(p.page, p.params);
+    }
+}
+
 pageStack.clean = function () {
     pageStack.stack = [];
 }
