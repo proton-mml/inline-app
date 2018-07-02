@@ -52,6 +52,27 @@ sconn.post = function (route, body, succ_callback) {
     });
 };
 
+sconn.post_unnoticed = function (route, body, succ_callback) {
+    body.token = sconn.token;
+    $.post({
+        url: sconn.baseURL + route,
+        data: body,
+        dataType: "text",
+        success: (data) => {
+            resp = JSON.parse(data);
+            if (resp.success) succ_callback(resp);
+            else {
+                if (resp.error == "token invalido") sconn.logout(false);
+                else succ_callback(resp);
+            }
+        },
+        error: (_, errstr, __) => {
+            console.log ("Error in sconn, for route: " + route + " #Err: " + errstr);
+        }
+    });
+};
+
+
 sconn.login = function (email, senha) {
     sconn.post("/autorizar", {email: email, senha: senha}, (answer) => {
         if (answer.success) {

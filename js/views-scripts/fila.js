@@ -16,6 +16,7 @@ fila.id = "";
 fila.load = function (params) {
     // fila.showInfo(fil, params.estabelecimento);
     fila.id = params.fila;
+    if (myposition.id_fila) $("#submit_entrar").hide();
     sconn.post("/fila", {id: params.fila}, (data) => {
         fila.showInfo(data.answer, params.estabelecimento);
         if (data.answer.cronologica) {
@@ -28,7 +29,10 @@ fila.load = function (params) {
                     }
                 } else page.showToast(data2.error);
             });
-        } else page.showToast ("Filas agendadas não suportadas no momento");
+        } else {
+            $("#submit_entrar").hide();
+            page.showToast ("Filas agendadas não suportadas no momento");
+        }
     });
 };
 
@@ -41,7 +45,6 @@ fila.showInfo = function (f, e) {
     $('#nome_estabelecimento').append($("<b>").text("Estabelecimento: ")).append(e);
     $('#data_hora_inicio').append($("<b>").text("Inicio: ")).append(inicio);
     $('#data_hora_fim').append($("<b>").text("Fim: ")).append(fim);
-    if (f.agendada) $("#submit_entrar").hide();
 }
 
 fila.getIn = function () {
@@ -50,6 +53,8 @@ fila.getIn = function () {
             $("#fora").hide();
             $("#dentro").show();
             $("#posicao").html(data.answer.posicao);
+            localStorage.setItem("user_inline", fila.id);
+            myposition.startTracking(fila.id);
         }
         else page.showToast(data.error);
     });
@@ -60,8 +65,9 @@ fila.getOut = function () {
         if (data.success) {
             $("#fora").show();
             $("#dentro").hide();
+            myposition.stopTracking(fila.id);
+            pageStack.reload();
             page.showToast("Você saiu da fila");
-            $("#no_pessoas").html(Number($("#no_pessoas").html())-1);
         }
         else page.showToast(data.error);
     });
